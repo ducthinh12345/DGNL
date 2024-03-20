@@ -27,8 +27,8 @@ Route::get('/', [App\Http\Controllers\UserController::class, 'getLogin'])->name(
 // Route::post('/', [App\Http\Controllers\UserController::class, 'postLogin'])->name('login');
 // Route::post('/', [App\Http\Controllers\UserController::class, 'demo'])->name('check');
 Route::get('/homeadmin', [App\Http\Controllers\UserController::class, 'adminlogin'])->name('adminlogin');
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('checkAdminLogin')->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware('checkAdminLogin')->name('login');
 
-Route::get('/home', [App\Http\Controllers\ProductController::class, 'export'])->name('product');
+Route::get('/home', [App\Http\Controllers\ProductController::class, 'export'])->middleware('checkAdminLogin')->name('product');
 
 Route::post('/order/add', [App\Http\Controllers\OrderController::class, 'add'])->name('addOrder');
